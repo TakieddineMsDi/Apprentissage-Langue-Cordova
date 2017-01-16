@@ -1,0 +1,49 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "cordova-plugin-speechrecognizer": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "cordova-plugin-tts": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "com.latin.continuoussr": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "cordova-plugin-ftp": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "cordova-plugin-android-permissions": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.cordova.apprentissage"
+        }
+    }
+}

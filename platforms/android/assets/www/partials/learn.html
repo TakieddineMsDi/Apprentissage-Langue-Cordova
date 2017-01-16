@@ -1,0 +1,169 @@
+<div ng-if="error != 0" style="position: absolute;z-index: 1001;width: 100%">
+    <div ng-if="error == 1" class="alert alert-success" role="alert" style="width: 100%">
+        <p style="text-align: center;">{{info}}</p>
+    </div>
+    <div ng-if="error == 2" class="alert alert-danger" role="alert" style="width: 100%">
+        <p style="text-align: center;">{{info}}</p>
+    </div>
+</div>
+<div ng-if="currentStep == -1">
+    <div style="background: rgba(0,0,0,.5) url(partials/img/spinner.gif) center center no-repeat;position: absolute;z-index: 1000;height: 100%;width: 100%;">
+
+    </div>
+</div>
+<div style="position: absolute;margin-left: 0px;margin-top: 10px;z-index: 999;" ng-if="currentStep > 0">
+    <a ng-click="goBack()"> Back</a>
+
+</div>
+<section class="panel panel-padding">
+
+    <h1>
+
+        Want to learn new languages ?
+    </h1>
+    <p>
+
+    </p>
+    <div ng-if="currentStep == -1">
+
+    </div>
+    <div ng-if="currentStep == 0">
+        <!-- <div ng-if="images < listFiles">-->
+
+
+        <!--</div>-->
+        <p style="text-align: center;">Select a language</p>
+        <!--<select ng-model="lang">
+				   	
+				   	<option ng-repeat="lg in languages" value="{{lg}}">{{lg}}</option>
+
+				   </select>-->
+        <h1 class="languages" ng-repeat="lang in languages" ng-click="saveLanguage(lang)"><img src="partials/img/lang.png" width="40px" height="40px"><a>{{lang}}</a></h1>
+
+    </div>
+    <div ng-if="currentStep == 1">
+        <p style="text-align: center;">Select a Level</p>
+        <!--<select ng-model="lang">
+				   	
+				   	<option ng-repeat="lg in languages" value="{{lg}}">{{lg}}</option>
+
+				   </select>-->
+        <div class="row">
+            <div class="col-sm-6 col-md-4" ng-repeat="niv in niveaux">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h1>Niveau {{niv}}</h1>
+                        <p style="text-align: center;">{{appDB.data[language].niveaux[niv].description}}</p>
+                        <p style="text-align: center;">
+                            <a ng-click="saveLevel(niv)" role="button"><img src="partials/img/start.png" height="25%" width="25%"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-if="currentStep == 2">
+        <p style="text-align: center;">Learning {{language}}\Niveau {{niveau}}</p>
+        <div ng-if="exCurrentStep < exerciceSteps">
+
+
+            <div class="panel panel-success">
+                <h1 class="panel-title">Speak this text</h1>
+                <h1 class="panel-body">{{currentExercice.value}}</h1>
+            </div>
+
+            <p>
+
+            </p>
+            <div ng-if="evaluation != -1">
+                <div ng-if="evaluation == false">
+                    <div class="alert alert-danger" role="alert">
+                        <p style="text-align: center;"><a class="alert-link">Oops, try again :)</a></p>
+                    </div>
+                </div>
+                <div ng-if="evaluation == true">
+                    <div class="alert alert-success" role="alert">
+                        <p style="text-align: center;"><a class="alert-link">Bravo :D</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                <div ng-if="consigne >=0">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <div class="caption">
+
+                                    <div ng-if="isimage && consigne!=consignes">
+                                        <p style="text-align: center;"><img src="{{image}}"></p>
+                                    </div>
+                                    <h1>Help : </h1>
+                                    <p style="text-align: center;">{{currentExercice.consignes[consigne].value}}</p>
+                                    <div ng-if="currentExercice.consignes[consigne].action.speak">
+                                        <p style="text-align: center;"><button ng-click="speakText(currentExercice.consignes[consigne].value)"><img src="partials/img/speaker.png" height="50px" width="50px"></button></p>
+                                    </div>
+                                    <div ng-if="consigne == consignes">
+                                        <p style="text-align: center;"> <button ng-click="speakText(currentExercice.value)"><img src="partials/img/speaker.png" height="50px" width="50px"></button></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<p style="text-align: center;">Consignes</p>
+                    <div ng-if="consigne <= consignes">
+                        <div ng-if="currentExercice.consignes[consigne].action.show">
+                            <p style="text-align: center;">{{currentExercice.consignes[consigne].value}}</p>
+                        </div>
+                        <div ng-if="currentExercice.consignes[consigne].action.speak">
+                            <p style="text-align: center;"><button ng-click="speakText(currentExercice.consignes[consigne].value)"><img src="partials/img/speaker.png" height="50px" width="50px"></button></p>
+                        </div>
+                    </div>
+                    <div ng-if="consigne == consignes">
+                        <button ng-click="speakText(currentExercice.value)"><img src="partials/img/speaker.png" height="50px" width="50px"></button>
+                    </div>-->
+                </div>
+
+            </p>
+            <div ng-if="evaluation == -1 || evaluation == false">
+                <p style="text-align: center"><button type="button" ng-click="recognizeSpeech(false)"><img src="partials/img/mic.png" height="50px" width="50px"></button></p>
+                <div ng-if="srpp == false">
+                    Speech recognition is not available in you device, but you can simulate success to navigate the app
+                    <button type="button" class="btn btn-primary" style="text-align: center;" ng-click="simulatesuccuss()">simulate success</button>
+                    <button type="button" class="btn btn-primary" style="text-align: center;" ng-click="simulatefailure()">simulate failure</button>
+                </div>
+            </div>
+        </div>
+        <div ng-if="exCurrentStep == exerciceSteps">
+            <div class="alert alert-success" role="alert">
+                <p class="alert-link" style="text-align: center;">Bravo :D, vous avez terminé</p>
+            </div>
+            <p style="text-align: center;"><a href="#exam/{{language}}/{{niveau}}" class="btn btn-primary">Passez l'examen</a></p>
+        </div>
+        <p>
+
+
+        </p>
+
+
+
+        <div ng-if="exCurrentStep >= 0 && exCurrentStep <= exerciceSteps-2">
+            <p style="float: right;"><button type="button" class="btn btn-primary" ng-click="next(true)">Next</button></p>
+
+        </div>
+        <div ng-if="exCurrentStep == exerciceSteps-1">
+            <p style="float: right;"><button type="button" class="btn btn-primary" ng-click="next(true)">Finish</button></p>
+        </div>
+
+        <div ng-if="exCurrentStep > 0">
+            <p style="float: left;"><button type="button" class="btn btn-primary" ng-click="back()">Back</button></p>
+        </div>
+
+
+        <divclass="progress" style="position: fixed;bottom: 60px;left: 0;right: 0;">
+            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{calculateProgress()}}" aria-valuemin="0" aria-valuemax="100" style="width:{{calculateProgress()}}%">
+                <!--{{calculateProgress()}}%-->({{exCurrentStep}}/{{exerciceSteps}})
+            </div>
+    </div>
+
+    </div>
+</section>

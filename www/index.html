@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="apprentissage">
+<head>
+    <title>Apprentissage</title>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+    <header class="header">
+        
+        <p style="position: absolute;width: 100%;text-align: center;">Apprentissage des langues</p>
+    </header>
+    <div ng-view class="view">
+
+    </div>
+    <nav class="nav" ng-controller="navCtrl">
+         <a href="#home" ng-click="menu='home'" ng-class="{active: menu=='home'}" style="float: left;width: 25%;border-right: 1px solid #000;"><p style="text-align: center;"><img src="img/home.png" height="60%" width="60%"></p></a>
+        <a href="#learn/default/0" ng-click="menu='learn'" ng-class="{active: menu=='learn'}" style="float: left;width: 25%;border-right: 1px solid #000;"><p style="text-align: center;"> <img src="img/learn.png" width="60%" height="60%"></p></a>
+        <a href="#exam/default/0" ng-click="menu='exam'" ng-class="{active: menu=='exam'}" style="float: left;width: 25%;border-right: 1px solid #000;"><p style="text-align: center;"><img src="img/exam.png" width="60%" height="60%"></p></a>
+        <a href="#about" ng-click="menu='about'" ng-class="{active: menu=='about'}" style="float: left;width: 25%;"><p style="text-align: center;"><img src="img/about.png" width="60%" height="60%"></p></a>
+    </nav>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.js"></script>
+    <script src="js/angular/Apprentissage.js"></script>
+
+</body>
+</html>
